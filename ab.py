@@ -4,8 +4,12 @@ import requests
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-path=r'C:\Program Files (x86)\chromedriver.exe'
-driver=webdriver.Chrome(path)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 url1='https://in.bookmyshow.com/buytickets/black-panther-wakanda-forever-3d4dx-kochi/movie-koch-ET00342960-MT'
 #url2=20221111
 #url=url1+str(url2)
